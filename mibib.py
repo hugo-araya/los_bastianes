@@ -9,5 +9,10 @@ def limpiar():
 def saludar():
     print('Hola a todos')
 
+def salir():
+    print('\n<<< Nos vemos >>>\n')
+
+SEGUNDOS = 1
+
 if __name__ == '__main__':
     print(__name__)
