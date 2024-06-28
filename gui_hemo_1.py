@@ -22,18 +22,18 @@ def funcion_analizar():
     hem = float(var_hemo.get())
     ed = int(var_edad.get())
     datos = [hem, ed, op, op_g]
-
     resultado = hemo.analisis(datos)
     print(resultado)
-    tts = gTTS(text = resultado, lang='es')
-    tts.save('resultado.mp3')
-    playsound('resultado.mp3')
+#    tts = gTTS(text = resultado, lang='es')
+#    tts.save('resultado.mp3')
+#    playsound('resultado.mp3')
     mBox.showinfo("Resultado analisis", resultado)
 
 if __name__ == '__main__':
     ventana = tk.Tk()
     ventana.title('Analisis de Hemoglobina')
     ventana.geometry('400x400')
+
     lbl_hemo = ttk.Label(ventana, text = 'Hemoglobina')
     lbl_hemo.grid(column = 0, row = 0)
 
@@ -48,13 +48,16 @@ if __name__ == '__main__':
     ent_edad = ttk.Entry(ventana,textvariable=var_edad )
     ent_edad.grid(column = 1, row = 1)
 
+    marco = ttk.Frame(ventana)
+    marco.grid(column = 2, row = 1)
+
     tipo1 = 'Meses'
     tipo2 = 'Agnos'
     opcion = tk.IntVar()
-    radio1 = ttk.Radiobutton(ventana,text = tipo1, variable = opcion, value = 1, command = funcion_radio)
-    radio1.grid(column = 2, row =1)
-    radio1 = ttk.Radiobutton(ventana,text = tipo2, variable = opcion, value = 2, command = funcion_radio)
-    radio1.grid(column = 2, row =2)
+    radio1 = ttk.Radiobutton(marco,text = tipo1, variable = opcion, value = 1, command = funcion_radio)
+    radio1.pack()
+    radio1 = ttk.Radiobutton(marco,text = tipo2, variable = opcion, value = 2, command = funcion_radio)
+    radio1.pack()
 
     lbl_genero = ttk.Label(ventana, text = 'genero')
     lbl_genero.grid(column = 0, row = 3)
@@ -69,7 +72,5 @@ if __name__ == '__main__':
 
     btn_analizar = ttk.Button(ventana, text = 'Analizar', command = funcion_analizar)
     btn_analizar.grid (column = 2, row = 5)
-
-    btn_salir = ttk.Button(ventana, text = 'Salir', command = quit)
-    btn_salir.grid (column = 2, row = 6)    
+    
     ventana.mainloop()
